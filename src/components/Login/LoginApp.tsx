@@ -10,7 +10,6 @@ export function LoginApp() {
     inputEmail,
     inputPassword,
     authLogin,
-    loginError,
     user,
   } = useContext(FaciliStoneContext);
 
@@ -34,7 +33,6 @@ export function LoginApp() {
         <button type="submit" onClick={authLogin()}>
           Login
         </button>
-        {loginError === true ? <Redirect to="/" /> : <div></div>}
       </FormLogin>
     </Div>
   );

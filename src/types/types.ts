@@ -81,7 +81,6 @@ export interface CreateContextProps {
   audits: AuditProps[];
   email: string;
   password: string;
-  loginError: boolean;
   user: any;
   handleSideBar: () => void;
   cpfMask: (cpf: string) => string;

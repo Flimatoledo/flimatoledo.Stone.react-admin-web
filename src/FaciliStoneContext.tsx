@@ -15,16 +15,16 @@ export const FaciliStoneContext = createContext<CreateContextProps>(
 );
 
 export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
+  // Estados usados no Login da APP
+  const [user, setUser] = useState({ email: "", password: "", auth: false });
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [users, setUsers] = useState<UserProps[]>([]);
   const [cards, setCards] = useState<CardProps[]>([]);
   const [audits, setAudits] = useState<AuditProps[]>([]);
   const [isActive, setIsActive] = useState(false);
   const [analysts, setAnalysts] = useState<AnalystsProps[]>([]);
 
-  // Estados usados no Login da APP
-  const [user, setUser] = useState({ email: "", password: "", auth: false });
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
 
   const url =
     process.env.NODE_ENV === "production"
@@ -41,9 +41,11 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
 
   let loginError = false;
   function authLogin() {
+    // eslint-disable-next-line
     return analysts.map((analyst) => {
       if (analyst.email === email && analyst.password === password) {
         login(email, password);
+        // eslint-disable-next-line
       } else loginError = true;
     });
   }
@@ -138,19 +140,23 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
   }
 
   // Pegando os Dados na API
-  async function getInfos(info: string) {
-    const response = await fetch(`${url}/${info}`);
-    return await response.json();
+  function getInfos(info: string) {
+    const response = fetch(`${url}/${info}`).then((response) =>
+      response.json()
+    );
+    return response;
   }
   useEffect(() => {
     getInfos("audits").then((data) => setAudits(data));
     getInfos("cards").then((data) => setCards(data));
     getInfos("users").then((data) => setUsers(data));
+    // eslint-disable-next-line
   }, [isActive]);
 
   useEffect(() => {
     getInfos("analysts").then((data) => setAnalysts(data));
-  }, [email]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <FaciliStoneContext.Provider
@@ -168,7 +174,6 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
         inputPassword,
         authLogin,
         user,
-        loginError,
         logOut,
       }}
     >

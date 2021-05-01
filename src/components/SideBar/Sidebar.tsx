@@ -1,8 +1,7 @@
 import { Flex, TextSpan, NavSide, Button } from "./styleSidebar";
 import { Link, Redirect } from "react-router-dom";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { FaciliStoneContext } from "../../FaciliStoneContext";
-
 
 export function Sidebar() {
   const { handleSideBar, user, logOut } = useContext(FaciliStoneContext);
