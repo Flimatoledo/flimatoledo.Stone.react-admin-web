@@ -30,7 +30,7 @@ export function LoginApp() {
           value={password}
           onChange={inputPassword}
         />
-        <button type="submit" onClick={authLogin()}>
+        <button type="submit" onClick={authLogin}>
           Login
         </button>
       </FormLogin>

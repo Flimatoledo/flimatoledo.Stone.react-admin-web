@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ContentAudits = styled.div`
   position: absolute;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;

@@ -25,7 +25,6 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
   const [isActive, setIsActive] = useState(false);
   const [analysts, setAnalysts] = useState<AnalystsProps[]>([]);
 
-
   const url =
     process.env.NODE_ENV === "production"
       ? "/api"
@@ -59,14 +58,14 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
     return <Redirect to="/dashboard" />;
   };
 
-  const logOut = () => {
+  function logOut() {
     setUser((user) => ({
       email: "",
       password: "",
       auth: false,
     }));
     return <Redirect to="/" />;
-  };
+  }
 
   // Inserindo nova auditoria no banco
   const registerAuditLog = async (obj: any, userID: any) => {
