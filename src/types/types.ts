@@ -90,5 +90,5 @@ export interface CreateContextProps {
   inputEmail: (event: any) => void;
   inputPassword: (event: any) => void;
   authLogin: () => any;
-  logout: () => any;
+  logOut: () => any;
 }

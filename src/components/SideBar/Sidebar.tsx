@@ -5,7 +5,7 @@ import { FaciliStoneContext } from "../../FaciliStoneContext";
 
 
 export function Sidebar() {
-  const { handleSideBar, user, logout } = useContext(FaciliStoneContext);
+  const { handleSideBar, user, logOut } = useContext(FaciliStoneContext);
 
   return user.auth ? (
     <NavSide>
@@ -28,7 +28,7 @@ export function Sidebar() {
 
       <div className="logout">
         <p>{user.email}</p>
-        <button onClick={logout}>Logout</button>
+        <button onClick={logOut}>Logout</button>
       </div>
     </NavSide>
   ) : (

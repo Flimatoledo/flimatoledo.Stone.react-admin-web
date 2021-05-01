@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 
 import {
@@ -59,7 +59,7 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
     return <Redirect to="/dashboard" />;
   };
 
-  const logout = () => {
+  const logOut = () => {
     setUser((user) => ({
       email: "",
       password: "",
@@ -171,7 +171,7 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
         authLogin,
         user,
         loginError,
-        logout,
+        logOut,
       }}
     >
       {props.children}
