@@ -1,40 +1,26 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { LoginApp } from "./components/Login/LoginApp";
+import { Dashboard } from "./dashboard";
+import { GlobalStyle } from "./styles/globalStyles";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { FaciliStoneProvider } from "./FaciliStoneContext";
+import { Users } from "./components/Users/Users";
+import { Cards } from "./components/Cards/Cards";
+import { Audits } from "./components/Audits/Audits";
+import { Sidebar } from "./components/SideBar/Sidebar";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const url =
-    process.env.NODE_ENV === "production"
-      ? "/api"
-      : "http://localhost:3001/api";
-
-  useEffect(() => {
-    fetch(`${url}/users`)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(setUsers);
-  }, [url]);
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>{JSON.stringify(users)}</p>
-      </header>
-    </div>
+    <FaciliStoneProvider>
+      <Router>
+        <GlobalStyle />
+        <LoginApp />
+        <Sidebar />
+        <Route path="/dashboard" exact component={Dashboard} />
+        <Route path="/users" exact component={Users} />
+        <Route path="/cards" exact component={Cards} />
+        <Route path="/audits" exact component={Audits} />
+      </Router>
+    </FaciliStoneProvider>
   );
 }
 
