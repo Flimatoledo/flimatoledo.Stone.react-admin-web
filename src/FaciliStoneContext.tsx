@@ -26,8 +26,6 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
-  console.log(email);
-
   const url =
     process.env.NODE_ENV === "production"
       ? "/api"
@@ -152,7 +150,7 @@ export function FaciliStoneProvider(props: FaciliStoneProviderProps) {
 
   useEffect(() => {
     getInfos("analysts").then((data) => setAnalysts(data));
-  }, []);
+  }, [email]);
 
   return (
     <FaciliStoneContext.Provider
