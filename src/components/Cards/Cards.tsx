@@ -80,6 +80,7 @@ export function Cards() {
             </p>
             <div className="approved-rejected">
               <button
+                type="button"
                 className="approved"
                 disabled={card.status !== "requested" ? true : false}
                 onClick={() => {
@@ -93,6 +94,7 @@ export function Cards() {
                 Aprovar
               </button>
               <button
+                type="button"
                 className="rejected"
                 disabled={card.status !== "requested" ? true : false}
                 onClick={() => {
